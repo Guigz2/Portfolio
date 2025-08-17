@@ -1,6 +1,8 @@
 import Hero from '@/components/Hero'
 import ProjectCard from '@/components/ProjectCard'
 import projects from '@/content/projects'
+import "../styles/globals.css"
+
 
 export default function Home() {
   return (
