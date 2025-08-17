@@ -10,7 +10,7 @@ export default function BottomNav() {
     return (
       <Link
         href={href}
-        className={`px-3 py-2 text-sm md:text-base transition-colors border-b-2 ${
+        className={`px-3 py-2 text-sm md:text-base transition-colors border-b-2 border-t-2 ${
           active
             ? 'border-current'
             : 'border-transparent hover:border-neutral-400 dark:hover:border-neutral-600'

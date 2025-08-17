@@ -10,12 +10,11 @@ export function Footer() {
         </div>
         <div>
           <p className="text-sm">Écris-moi :</p>
-          <Link href="mailto:hello@example.com" className="underline">hello@example.com</Link>
+          <Link href="mailto:guillaume.egu@gmail.com" className="underline">guillaume.egu@gmail.com</Link>
         </div>
         <div className="flex gap-4 text-sm">
-          <Link href="#" className="underline">LinkedIn</Link>
-          <Link href="#" className="underline">GitHub</Link>
-          <Link href="#" className="underline">Dribbble</Link>
+          <Link href="https://www.linkedin.com/in/guillaume-egu-970461256/" target="_blank" rel="noopener noreferrer" className="underline">LinkedIn</Link>
+          <Link href="https://github.com/Guigz2" target="_blank" rel="noopener noreferrer" className="underline">GitHub</Link>
         </div>
       </div>
       <div className="mx-auto max-w-6xl px-4 pb-8 text-xs text-neutral-500">© {new Date().getFullYear()} — Tous droits réservés.</div>

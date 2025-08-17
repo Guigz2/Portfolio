@@ -36,7 +36,7 @@ export function Header() {
         scrollTrigger: {
           trigger: header,
           start: 'top top',
-          end: '+=250',       // plus petit = diminution plus rapide
+          end: '+=550',       // plus petit = diminution plus rapide
           scrub: 0.8,
         },
         defaults: { ease: 'power2.out' },
