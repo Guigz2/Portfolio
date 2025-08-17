@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
   title: 'Mon Portfolio',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        <BottomNav />
       </body>
     </html>
   )
