@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-neutral-200 dark:border-neutral-800">
+    <footer className="border-t border-black bg-black text-white">
       <div className="mx-auto max-w-6xl px-4 py-10 grid gap-6 md:grid-cols-3 items-start">
         <div>
           <h3 className="text-lg font-semibold">Disponible pour missions</h3>

@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function Header() {
+export function HeaderHero() {
   const headerRef = useRef<HTMLDivElement>(null)
   const innerRef = useRef<HTMLDivElement>(null)
   const titleLeftRef = useRef<HTMLSpanElement>(null)
@@ -39,28 +39,52 @@ export function Header() {
     // Respect reduced-motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       gsap.set([left, right], { fontSize: 18, lineHeight: 1 })
-      gsap.set(inner, { paddingTop: 12, paddingBottom: 12 })
+      gsap.set(inner, { paddingTop: 12, paddingBottom: 12, paddingLeft: 0, paddingRight: 0 })
       return
     }
 
     // État initial (gros titres, donc header haut, sans forcer la hauteur)
     gsap.set([left, right], { fontSize: 75, letterSpacing: 2, lineHeight: 1, display: 'inline-block' })
-    gsap.set(inner, { paddingTop: 28, paddingBottom: 28, paddingLeft: 16, paddingRight: 16 })
+    //gsap.set(inner, { paddingTop: 28, paddingBottom: 28, paddingLeft: 16, paddingRight: 16 })
+    
+    const calcPadXStart = () => {
+      const vw = window.innerWidth
+      const gap0 = 32 // écart souhaité entre les deux titres au centre (ajuste à ton goût)
+      const lw = left.getBoundingClientRect().width
+      const rw = right.getBoundingClientRect().width
+      const total = lw + rw + gap0
+      const pad = Math.max(0, (vw - total) / 2)
+      return pad
+    }
 
+    // On applique le padding de départ (collés au centre)
+    gsap.set(inner, {
+      paddingTop: 28,
+      paddingBottom: 28,
+      paddingLeft: calcPadXStart(),
+      paddingRight: calcPadXStart(),
+    })
+
+    // 5) Timeline scroll : réduction + les spans s’écartent jusqu’aux bords (padding → 0)
     const ctx = gsap.context(() => {
-      gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: header,
           start: 'top top',
-          end: '+=550',       // plus petit = diminution plus rapide
+          end: '+=550',
           scrub: 0.8,
+          // Si tu redimensionnes la fenêtre, on recalcule le padding de départ
+          onRefresh: () => {
+            gsap.set(inner, { paddingLeft: calcPadXStart(), paddingRight: calcPadXStart() })
+          },
         },
         defaults: { ease: 'power2.out' },
       })
-        // On ne touche PAS à la hauteur : elle suit le texte
-        .to([left, right], { fontSize: 18, letterSpacing: 0.5 }, 0)
+
+      tl.to([left, right], { fontSize: 18, letterSpacing: 0.5 }, 0)
         .to(inner, { paddingTop: 12, paddingBottom: 12 }, 0)
-      // AUCUN backgroundColor ici → vraiment transparent
+        // 👇 la magie : on fait “exploser” le groupe vers les bords
+        .to(inner, { paddingLeft: 12, paddingRight: 12 }, 0)
     }, header)
 
     return () => {
@@ -74,7 +98,7 @@ export function Header() {
       ref={headerRef}
       className="sticky top-0 z-50 bg-transparent"  // pas de border, pas de backdrop-blur, pas de dark:bg-*
     >
-      <div ref={innerRef} className="mx-auto max-w-6xl flex items-center justify-between">
+      <div ref={innerRef} className="w-full flex items-center justify-between gap-x-3">
         <Link href="/" className="font-bold uppercase tracking-wide">
           <span ref={titleLeftRef}
           className={`transition-colors duration-300 ${!isOnHero ? "text-black" : "text-white"}`}>
