@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -12,6 +12,7 @@ export function Header() {
   const innerRef = useRef<HTMLDivElement>(null)
   const titleLeftRef = useRef<HTMLSpanElement>(null)
   const titleRightRef = useRef<HTMLSpanElement>(null)
+  const [isOnHero, setIsOnHero] = useState(false)
 
   useLayoutEffect(() => {
     const header = headerRef.current
@@ -19,6 +20,21 @@ export function Header() {
     const left = titleLeftRef.current
     const right = titleRightRef.current
     if (!header || !inner || !left || !right) return
+
+    // Sélectionne le Hero (section) pour le trigger
+    const hero = document.querySelector('section.relative.h-screen')
+    if (!hero) return
+
+    // Ajout du ScrollTrigger pour changer la couleur
+    const trigger = ScrollTrigger.create({
+      trigger: hero,
+      start: 'top top',      // quand le haut du Hero touche le haut du viewport
+      end: 'bottom top',     // quand le bas du Hero touche le haut du viewport
+      onEnter: () => setIsOnHero(true),      // Header sur le Hero → blanc
+      onLeave: () => setIsOnHero(false),     // Header sort du Hero → noir
+      onEnterBack: () => setIsOnHero(true),  // Scroll vers le haut → blanc
+      onLeaveBack: () => setIsOnHero(false), // Scroll vers le haut → noir
+    })
 
     // Respect reduced-motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -47,7 +63,10 @@ export function Header() {
       // AUCUN backgroundColor ici → vraiment transparent
     }, header)
 
-    return () => ctx.revert()
+    return () => {
+      trigger.kill()
+      ctx.revert()
+    }
   }, [])
 
   return (
@@ -57,11 +76,15 @@ export function Header() {
     >
       <div ref={innerRef} className="mx-auto max-w-6xl flex items-center justify-between">
         <Link href="/" className="font-bold uppercase tracking-wide">
-          <span ref={titleLeftRef}>Guillaume EGU</span>
+          <span ref={titleLeftRef}
+          className={`transition-colors duration-300 ${!isOnHero ? "text-black" : "text-white"}`}>
+            Guillaume EGU</span>
         </Link>
 
         <Link href="/" className="font-bold uppercase tracking-wide">
-          <span ref={titleRightRef}>Portfolio</span>
+          <span ref={titleRightRef} 
+          className={`transition-colors duration-300 ${!isOnHero ? "text-black" : "text-white"}`}>
+            Portfolio</span>
         </Link>
       </div>
     </header>
