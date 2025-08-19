@@ -15,10 +15,14 @@ export default function Home() {
 
       <div className="w-full pt-24 pb-0 bg-gradient-to-b from-white via-rose-200 via-sky-200 via-emerald-200 to-white">
 
-        {/* Formations */}
-        <section id="formations" className="px-6 md:px-8 py-12">
-          <h2 className="px-40 text-4xl md:text-5xl font-bold uppercase">Formations</h2>
-          <div className="grid gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Formations 
+        2) Placez plusieurs <FormationCard /> dans un conteneur horizontal (flex + overflow-x-auto + snap) pour
+   former une frise chronologique cliquable allant de gauche à droite.
+        */}
+        <section id="formations" className="pb-12">
+          <h2 className="px-48 text-4xl md:text-5xl font-bold uppercase py-4">Formations</h2>
+          {/* <div className="grid gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3"> */}
+          <div className="flex overflow-x-auto snap bg-black">
             {formations.map((f) => (
               <FormationCard key={f.slug} formation={f} />
             ))}
