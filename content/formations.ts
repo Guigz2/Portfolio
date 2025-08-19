@@ -5,6 +5,7 @@ export type Formation = {
   degree: string       // ex: "Master Data Science"
   period: string       // ex: "2021 – 2023"
   location?: string
+  description?: string
   details?: string[]   // puces
   link?: string
 }
@@ -12,25 +13,28 @@ export type Formation = {
 const formations: Formation[] = [
   {
     slug: 'master-ds',
-    school: 'Université A',
+    school: 'University of West Scotland',
     degree: 'Master Data Science',
-    period: '2021 – 2023',
-    location: 'Paris, FR',
+    period: '2024',
+    location: 'Glasgow, UK',
+    description: "Etudes en anglais sur : Data Mining, Machine Learning, Deep Learning, IA générative et Business Intelligence",
     details: ['ML avancé, MLOps', 'Projet de fin d’études en NLP'],
-    link: 'https://example.com'
+    link: 'https://www.uws.ac.uk/'
   },
   {
-    slug: 'licence-maths',
-    school: 'Université B',
-    degree: 'Licence Mathématiques',
-    period: '2018 – 2021',
-    details: ['Statistiques, proba, optimisation']
+    slug: 'ecole',
+    school: 'IMT Nord Europe (école issue de la fusion des Mines de Douai et de Télécom Lille)',
+    degree: 'Diplôme d’ingénieur généraliste',
+    period: '2022-2025',
+    description: "Spécialisation en analyses de données avancées, outils BI, base de données, Machine Learning",
+    details: ['Statistiques, proba, optimisation'],
+    link: "https://imt-nord-europe.fr/"
   },
   {
-    slug: 'certif-ml',
-    school: 'Plateforme C',
-    degree: 'Certification Machine Learning',
-    period: '2022',
+    slug: 'cpge',
+    school: 'Lycée Jean-Baptiste SAY',
+    degree: "Classe Préparatoire aux Grandes Ecoles - Physique Science de l'ingénieur (PSI*)",
+    period: '2020-2022',
     details: ['Réseaux de neurones, deployment']
   },
 ]

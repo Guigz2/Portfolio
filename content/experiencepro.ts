@@ -14,9 +14,9 @@ export type Experience = {
 
 const experiences: Experience[] = [
   {
-    slug: 'de-rg',
+    slug: 'dp-intern-rg',
     role: '[STAGE] Digital Process Engineer',
-    company: 'Renault Group',
+    company: 'Renault Group - Procurement',
     period: '2025',
     location: 'Guyancourt, FR',
     description: '6 mois',
@@ -31,12 +31,12 @@ const experiences: Experience[] = [
     logo: '/logo_entreprise/renault_logo.png'
   },
   {
-    slug: 'ml-intern-y',
-    role: 'Stagiaire ML',
-    company: 'Entreprise Y',
-    period: '2023',
-    location: 'Lyon, FR',
-    description: 'R&D NLP pour la classification de documents.',
+    slug: 'do-intern-rg',
+    role: '[STAGE] Ingénieur développement d’outils digitaux',
+    company: 'Renault Group - Industrial Strategy',
+    period: '2024',
+    location: 'Guyancourt, FR',
+    description: '4 mois',
     achievements: [
       "Conception de tableaux de bord et d’outils de pilotage pour le suivi des indicateurs clés.",
       "Automatisation de tâches récurrentes et développement de pipelines de données en Python pour optimiser les processus internes.",
@@ -47,11 +47,12 @@ const experiences: Experience[] = [
     logo: '/logo_entreprise/renault_logo.png'
   },
   {
-    slug: 'bi-analyst-z',
-    role: 'Data/BI Analyst',
-    company: 'Groupe Z',
-    period: '2022 – 2023',
-    description: 'Tableaux de bord décisionnels et analyse ad hoc.',
+    slug: 'cl-intern-p',
+    role: '[STAGE] Coordinateur déploiement cloud & Support IT',
+    company: 'Groupe Pomona',
+    period: '2023',
+    description: '3 mois',
+    location: 'Chanteloup-les-Vignes, FR',
     achievements: [
       "Pilotage du management du changement lors de l’introduction du cloud au sein des équipes métiers.",
       "Support informatique et formation des utilisateurs sur les outils internes.",

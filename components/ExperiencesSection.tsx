@@ -38,7 +38,7 @@ export default function ExperiencesSection() {
       // durée de scroll sur la section : hauteur section - hauteur viewport (+ offset header)
       const dist = section.scrollHeight - window.innerHeight + headerOffset
       // éviter une durée nulle/négative (qui provoquerait un jump)
-      return `+=${10*Math.max(1, dist)}`
+      return `+=${4.25*Math.max(1, dist)}`
     }
 
     // On force l'état initial à y:0, et on scrub jusqu'à y:calcTravel()
@@ -82,7 +82,14 @@ export default function ExperiencesSection() {
       </div>
 
       {/* Colonne droite : liste mappée */}
-      <div ref={listRef} className="col-span-2 flex flex-col gap-8 mt-8">
+      <div
+        ref={listRef}
+        className="
+          col-span-2 grid gap-8 mt-8 items-stretch
+          grid-cols-1
+          [&>*]:h-full   /* <-- chaque card = hauteur de la ligne */
+        "
+      >
         {experiences.map((e) => (
           <ExperienceCard key={e.slug} experience={e} />
         ))}
