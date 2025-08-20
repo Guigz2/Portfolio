@@ -1,9 +1,16 @@
+import AnalogClock from "@/components/AnalogClock"
+import PixelBackground from "@/components/PixelBackground"
+
 export const dynamic = 'force-static'
 
 export default function AProposPage() {
   return (
+    <>
+      {/* Fond interactif */}
+      <PixelBackground cellSize={56} radius={50} intensity={0.9} />
+
     <section className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-4xl md:text-6xl font-bold uppercase">À propos</h1>
+      <h1 className="text-4xl md:text-6xl font-bold uppercase">Portrait</h1>
       <p className="mt-4 text-neutral-700 dark:text-neutral-300">
         Développeur front-end & motion basé à Paris. J’aime concevoir des interfaces sobres et dynamiques,
         avec un focus performance, accessibilité et détail typographique.
@@ -33,5 +40,8 @@ export default function AProposPage() {
         <a href="/cv.pdf" className="underline">Télécharger mon CV</a>
       </div>
     </section>
+
+    <AnalogClock />
+    </>
   )
 }

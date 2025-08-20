@@ -34,7 +34,10 @@ export default function AnalogClock() {
   return (
     <section className="relative py-24">
       {/* bandeaux texte */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 text-xs tracking-[.2em] text-zinc-400">
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 text-xl tracking-[.2em] text-black">
+        BASED IN PARIS
+      </div>
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 text-xs tracking-[.2em] text-zinc-400">
         MY CURRENT LOCAL TIME
       </div>
       <div className={`absolute left-6 bottom-1/2 translate-y-1/2 text-6xl md:text-7xl ${dot.className}`}>
