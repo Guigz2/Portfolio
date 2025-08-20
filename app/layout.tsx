@@ -1,8 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Footer } from '@/components/Footer'
-import BottomNav from '@/components/BottomNav'
-import HeaderSwitch from '@/components/HeaderSwitch'
+import { Footer } from '@/components/HBF/Footer'
+import BottomNav from '@/components/HBF/BottomNav'
+import HeaderSwitch from '@/components/HBF/HeaderSwitch'
 
 export const metadata: Metadata = {
   title: 'Mon Portfolio',

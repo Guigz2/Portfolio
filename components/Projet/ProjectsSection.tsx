@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import ProjectCard from '@/components/ProjectCard'
+import ProjectCard from '@/components/Projet/ProjectCard'
 import type { Project } from '@/content/projects'
 
 type Props = { projects: Project[]; speed?: number } // px/s

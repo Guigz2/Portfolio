@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import FormationCard from '@/components/FormationCard'
+import FormationCard from '@/components/Formation/FormationCard'
 import type { Formation } from '@/content/formations'
 
 gsap.registerPlugin(ScrollTrigger)
