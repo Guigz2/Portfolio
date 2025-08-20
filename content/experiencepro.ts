@@ -1,14 +1,13 @@
-// content/experiencepro.ts
 export type Experience = {
   slug: string
   role: string
   company: string
-  period: string          // ex: "2024 – Présent"
+  period: string          
   location?: string
   description?: string
-  achievements?: string[] // puces
-  tech?: string[]         // tags techno
-  link?: string           // lien (portfolio / entreprise / article)
+  achievements?: string[] 
+  tech?: string[]         
+  link?: string           
   logo?: string
 }
 

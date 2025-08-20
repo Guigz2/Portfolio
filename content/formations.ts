@@ -1,12 +1,11 @@
-// content/formations.ts
 export type Formation = {
   slug: string
   school: string
-  degree: string       // ex: "Master Data Science"
-  period: string       // ex: "2021 – 2023"
+  degree: string       
+  period: string       
   location?: string
   description?: string
-  details?: string[]   // puces
+  details?: string[]   
   link?: string
   gradient: string
 }
@@ -18,7 +17,7 @@ const formations: Formation[] = [
     degree: "Classe Préparatoire aux Grandes Ecoles - Physique Science de l'ingénieur (PSI*)",
     period: '2020-2022',
     details: ['Réseaux de neurones, deployment'],
-    gradient: "from-pink-500 via-red-500 to-yellow-500",
+    gradient: "from-pink-200 to-yellow-200",
   },
   {
     slug: 'ecole',
@@ -28,7 +27,7 @@ const formations: Formation[] = [
     description: "Spécialisation en analyses de données avancées, outils BI, base de données, Machine Learning",
     details: ['Statistiques, proba, optimisation'],
     link: "https://imt-nord-europe.fr/",
-    gradient: "from-pink-500 via-red-500 to-yellow-500",
+    gradient: "from-yellow-200 to-green-200",
   },
   {
     slug: 'master-ds',
@@ -39,7 +38,7 @@ const formations: Formation[] = [
     description: "Etudes en anglais sur : Data Mining, Machine Learning, Deep Learning, IA générative et Business Intelligence",
     details: ['ML avancé, MLOps', 'Projet de fin d’études en NLP'],
     link: 'https://www.uws.ac.uk/',
-    gradient: "from-pink-500 via-red-500 to-yellow-500",
+    gradient: "from-green-200 to-blue-200",
   },
 ]
 

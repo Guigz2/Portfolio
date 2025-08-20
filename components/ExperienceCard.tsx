@@ -1,6 +1,4 @@
-// components/ExperienceCard.tsx
 import Link from 'next/link'
-import Image from 'next/image'
 import type { Experience } from '@/content/experiencepro'
 
 export default function ExperienceCard({ experience }: { experience: Experience }) {
@@ -8,11 +6,7 @@ export default function ExperienceCard({ experience }: { experience: Experience 
 
   return (
     <article className="border border-black shadow-sm hover:shadow-md transition-shadow bg-black backdrop-blur overflow-hidden">
-      {/* Grid: 1re colonne = carré (largeur = hauteur de la card) */}
       <div className="grid grid-cols-[auto,1fr] items-stretch">
-        
-
-        {/* Contenu (padding ici => espace à droite de l'image) */}
         <div className="p-5 min-w-0">
           <h3 className="text-lg font-semibold text-white">
             {role} <span className="text-gray-400">· {company}</span>

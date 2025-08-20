@@ -5,3 +5,24 @@
 body {
   font-family: system-ui, sans-serif;
 }
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+.edge-fade-left {
+  position: absolute; inset-block: 0; left: 0; width: 48px;
+  -webkit-mask-image: linear-gradient(to right, black, transparent);
+  mask-image: linear-gradient(to right, black, transparent);
+  pointer-events: none;
+}
+.edge-fade-right {
+  position: absolute; inset-block: 0; right: 0; width: 48px;
+  -webkit-mask-image: linear-gradient(to left, black, transparent);
+  mask-image: linear-gradient(to left, black, transparent);
+  pointer-events: none;
+}

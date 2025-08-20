@@ -7,42 +7,64 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
+  const descRef = useRef<HTMLParagraphElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (titleRef.current) {
-      gsap.fromTo(
-        titleRef.current,
-        { y: 80, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-      )
-    }
+    const prefersReduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    if (bgRef.current) {
-      gsap.to(bgRef.current, {
-        y: 300, // la valeur du "décalage" pendant le scroll
-        ease: 'none',
-        scrollTrigger: {
-          trigger: bgRef.current,
-          start: 'top bottom', // quand l’élément entre dans la vue
-          scrub: true, // synchro avec le scroll
-        },
-      })
-    }
+    const ctx = gsap.context(() => {
+      if (titleRef.current) {
+        if (prefersReduced) {
+          gsap.set(titleRef.current, { opacity: 1, x: 0 })
+        } else {
+          gsap.fromTo(
+            titleRef.current,
+            { x: -80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out' }
+          )
+        }
+      }
+
+      if (descRef.current) {
+        if (prefersReduced) {
+          gsap.set(descRef.current, { opacity: 1, x: 0 })
+        } else {
+          gsap.fromTo(
+            descRef.current,
+            { x: 80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.5 }
+          )
+        }
+      }
+
+      if (bgRef.current) {
+        gsap.to(bgRef.current, {
+          y: 300,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current || bgRef.current,
+            start: 'top bottom',
+            scrub: true,
+          },
+        })
+      }
+    }, sectionRef)
+
+    return () => ctx.revert()
   }, [])
 
   return (
-    <section className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
-      {/* 
-      <div
-        ref={bgRef}
-        className="absolute inset-0 -z-10 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/Illu_HomePage_2.png')" }}
-      />
-      */}
-
+    <section
+      ref={sectionRef}
+      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden"
+    >
       <video
         ref={videoRef}
         className="absolute inset-0 -z-10 w-full h-full object-cover"
@@ -56,11 +78,15 @@ export default function Hero() {
 
       <h1
         ref={titleRef}
-        className="text-6xl md:text-8xl font-bold uppercase text-white drop-shadow-lg"
+        className="text-6xl md:text-8xl font-bold uppercase text-white drop-shadow-lg will-change-transform"
       >
         Data Scientist
       </h1>
-      <p className="mt-4 text-lg max-w-lg text-white drop-shadow">
+
+      <p
+        ref={descRef}
+        className="mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform"
+      >
         Développer et implémenter des modèles statistiques et des algorithmes de
         machine learning pour faire ressortir des insights et prendre des
         décisions data-driven.
