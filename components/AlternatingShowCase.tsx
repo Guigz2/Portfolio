@@ -4,21 +4,27 @@ import AltParallaxRow from '@/components/AltParallaxRow'
 const rows = [
   {
     side: 'image-right' as const,
-    image: { src: '/images/Portrait.jpg', alt: 'Portrait 1' },
-    title: 'Design & Motion',
-    text: 'J’explore l’interface comme un espace vivant : micro-interactions, rythme et lisibilité.',
+    image: { src: '/images/portrait-1.jpg', alt: 'Guillaume — portrait' },
+    title: 'Jeune diplômé en data',
+    text: "Diplômé de l’IMT Nord Europe, je transforme les données en décisions via modèles, analyses et dashboards. Je cherche mon premier poste en data science",
   },
   {
     side: 'image-left' as const,
-    image: { src: '/images/projet1.jpg', alt: 'Portrait 2' },
-    title: 'Performance & Détail',
-    text: 'Core Web Vitals, accessibilité, typographie et systèmes UI soignés.',
+    image: { src: '/images/portrait-2.jpg', alt: 'Guillaume — musique' },
+    title: 'Passionné de musique',
+    text: "Je compose et bidouille du son. J’aime croiser musique et data : analyse de playlists, détection de tempo, petites applis de recommandation.",
   },
   {
     side: 'image-right' as const,
-    image: { src: '/images/projet2.jpg', alt: 'Portrait 3' },
-    title: 'Technos',
-    text: 'Next.js, TypeScript, GSAP/ScrollTrigger, un peu de WebGL, Tailwind CSS.',
+    image: { src: '/images/portrait-3.jpeg', alt: 'Guillaume — arts martiaux' },
+    title: 'Randonnée',
+    text: "Préparation, endurance et sens de l’itinéraire : j’aime avancer pas à pas, observer le terrain et atteindre le sommet.",
+  },
+  {
+    side: 'image-left' as const,
+    image: { src: '/images/portrait-4.jpeg', alt: 'Guillaume — projets tech' },
+    title: 'Créatif et développeur',
+    text: "J’aime donner vie aux idées : Next.js, TypeScript, GSAP. Prototypes rapides, détails soignés, performance réelle.",
   },
 ]
 
