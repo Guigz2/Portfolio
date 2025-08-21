@@ -26,7 +26,7 @@ export default function BottomNav() {
       <div className="flex items-center gap-1 rounded-full bg-black text-white px-6 py-1 backdrop-blur-md shadow-lg">
         <NavLink href="/">ACCUEIL</NavLink>
         <NavLink href="/projets">PROJETS</NavLink>
-        <NavLink href="/a-propos">À PROPOS</NavLink>
+        <NavLink href="/a-propos">PORTRAIT</NavLink>
         <NavLink href="/contact">CONTACT</NavLink>
       </div>
     </nav>
