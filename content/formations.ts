@@ -8,6 +8,7 @@ export type Formation = {
   details?: string[]   
   link?: string
   gradient: string
+  tech?: string[] 
 }
 
 const formations: Formation[] = [
@@ -16,8 +17,18 @@ const formations: Formation[] = [
     school: 'Lycée Jean-Baptiste SAY',
     degree: "Classe Préparatoire aux Grandes Ecoles - Physique Science de l'ingénieur (PSI*)",
     period: '2020-2022',
-    details: ['Réseaux de neurones, deployment'],
-    gradient: "from-pink-200 to-yellow-200",
+    details: [
+      'Maths avancées : algèbre linéaire, probas/statistiques',
+      'Physique & SI : modélisation, systèmes et méthodes numériques',
+      'Algorithmique et résolution de problèmes (logique, complexité)',
+      'Initiation à la programmation scientifique (Python/Matlab)',
+    ],
+    tech: [
+      'Python', 'Matlab', 'Algorithmique',
+      'Algèbre linéaire', 'Probas', 'Méthodes numériques'
+    ],
+
+    gradient: 'from-pink-200 to-yellow-200',
   },
   {
     slug: 'ecole',
@@ -25,7 +36,16 @@ const formations: Formation[] = [
     degree: 'Diplôme d’ingénieur généraliste',
     period: '2022-2025',
     description: "Spécialisation en analyses de données avancées, outils BI, base de données, Machine Learning",
-    details: ['Statistiques, proba, optimisation'],
+    details: [
+      'Bases data : Python (pandas), SQL, data viz',
+      'Statistiques descriptives & probas',
+      'Intro ML : régression, arbres, k-means',
+      'Outils d’ingénieur : Git, Linux, gestion de projet',
+    ],
+    tech: [
+      'Python', 'pandas', 'SQL', 'scikit-learn',
+      'Data viz', 'Git', 'Linux', 'Power BI'
+    ],
     link: "https://imt-nord-europe.fr/",
     gradient: "from-yellow-200 to-green-200",
   },
@@ -36,7 +56,17 @@ const formations: Formation[] = [
     period: '2024',
     location: 'Glasgow, UK',
     description: "Etudes en anglais sur : Data Mining, Machine Learning, Deep Learning, IA générative et Business Intelligence",
-    details: ['ML avancé, MLOps', 'Projet de fin d’études en NLP'],
+    details: [
+      'Deep Learning (PyTorch/TensorFlow) : CNN, RNN/Transformers',
+      'NLP : embeddings, fine-tuning (BERT/DistilBERT), évaluation (F1, ROC-AUC)',
+      'IA générative & LLMs (notions), éthique et biais',
+      'Feature engineering, sélection de variables, Data Mining avancé',
+      'Projet de fin d’études en NLP',
+    ],
+    tech: [                     
+      'PyTorch', 'TensorFlow', 'Transformers',
+      'BERT', 'NLP', 'MLflow', 'scikit-learn'
+    ],
     link: 'https://www.uws.ac.uk/',
     gradient: "from-green-200 to-blue-200",
   },

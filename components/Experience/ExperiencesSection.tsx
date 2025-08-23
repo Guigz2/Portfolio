@@ -31,10 +31,7 @@ export default function ExperiencesSection() {
       const railH = rail.clientHeight || section.clientHeight
       return Math.max(0, railH - title.offsetHeight)
     }
-    const calcEnd = () => {
-      const dist = section.scrollHeight - window.innerHeight + headerOffset
-      return `+=${4.25 * Math.max(1, dist)}`
-    }
+    const calcEnd = () => `+=${calcTravel()}`
 
     const ctx = gsap.context(() => {
       const tween = gsap.fromTo(
@@ -46,7 +43,11 @@ export default function ExperiencesSection() {
           immediateRender: false,
           scrollTrigger: {
             trigger: section,
-            start: () => `top top+=${headerOffset}`,
+            start: () => {
+              const h = document.querySelector<HTMLElement>('header.sticky')
+              const off = h ? h.getBoundingClientRect().height : 0
+              return `top top+=${off}`
+            },
             end: calcEnd,
             scrub: true,
             invalidateOnRefresh: true,

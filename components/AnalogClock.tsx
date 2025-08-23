@@ -146,9 +146,7 @@ function buildState(): ClockState {
   tz = tz.replace(/[^A-Z+\-0-9]/g, '') // nettoyer style 'GMT+2'
 
   // ⬇️ statut selon l'heure locale (8h ≤ heure < 22h)
-  const hour = Number(new Intl.DateTimeFormat('fr-FR', {
-  timeZone: 'Europe/Paris', hour: '2-digit', hour12: false
-}).format(new Date()))
+  const hour = now.getHours()
 
   const status =
     hour >= 8 && hour < 22
