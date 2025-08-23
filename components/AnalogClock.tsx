@@ -6,7 +6,7 @@ import { DotGothic16 } from 'next/font/google'
 const dot = DotGothic16({ subsets: ['latin'], weight: '400' })
 
 type Angles = { h: number; m: number; s: number }
-type ClockState = { angles: Angles; timeText: string; tz: string }
+type ClockState = { angles: Angles; timeText: string; tz: string; status: string }
 
 export default function AnalogClock() {
   const rafRef = useRef<number | null>(null)
@@ -39,6 +39,9 @@ export default function AnalogClock() {
       </div>
       <div className="absolute top-8 left-1/2 -translate-x-1/2 text-xs tracking-[.2em] text-zinc-400">
         MY CURRENT LOCAL TIME
+      </div>
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-sm text-zinc-600 tracking-[.2em]">
+        {state.status}
       </div>
       <div className={`absolute left-6 bottom-1/2 translate-y-1/2 text-6xl md:text-7xl ${dot.className}`}>
         {state.timeText}
@@ -142,5 +145,15 @@ function buildState(): ClockState {
     .find(p => p.type === 'timeZoneName')?.value || 'LOCAL'
   tz = tz.replace(/[^A-Z+\-0-9]/g, '') // nettoyer style 'GMT+2'
 
-  return { angles, timeText, tz }
+  // ⬇️ statut selon l'heure locale (8h ≤ heure < 22h)
+  const hour = Number(new Intl.DateTimeFormat('fr-FR', {
+  timeZone: 'Europe/Paris', hour: '2-digit', hour12: false
+}).format(new Date()))
+
+  const status =
+    hour >= 8 && hour < 22
+      ? 'Je dois surement être réveillé. Contactez moi.'
+      : 'Je dois surement dormir, mais envoyer moi un message et je vous répondrai dès que possible'
+
+  return { angles, timeText, tz, status }
 }

@@ -40,7 +40,7 @@ export default function AltParallaxRow({
   overlapY = -12,   // léger chevauchement (raccroche visuellement)
 }: Props) {
   const rowRef = useRef<HTMLDivElement | null>(null)
-  const imgWrapRef = useRef<HTMLDivElement | null>(null)
+  const imgWrapRef = useRef<HTMLDivElement | null>(null) 
   const copyRef = useRef<HTMLDivElement | null>(null)
 
   useLayoutEffect(() => {
@@ -59,7 +59,7 @@ export default function AltParallaxRow({
 
       // Parallaxe + zoom progressif de l’image
       gsap.to(imgWrap, {
-        yPercent: 28 * depthImg,      // ⬅️ plus d’amplitude
+        yPercent: 24 * depthImg,      // ⬅️ plus d’amplitude
         scale: 1.12,                  // ⬅️ petit zoom le long du scroll
         ease: 'none',
         scrollTrigger: {

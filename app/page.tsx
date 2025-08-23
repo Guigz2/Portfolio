@@ -5,13 +5,18 @@ import FormationsSection from '@/components/Formation/FormationsSection'
 import ExperiencesSection from '@/components/Experience/ExperiencesSection'
 import ProjectsSection from '@/components/Projet/ProjectsSection'
 import PixelOverlayBlend from '@/components/PixelOverlayBlend'
+import SplashScreen from '@/components/SplashScreen'
 import "../styles/globals.css"
 
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <SplashScreen minDuration={800} />
+
+      <section data-hero className="relative h-screen">
+        <Hero />
+      </section>
 
       <div className="relative w-full pt-24 pb-0 bg-gradient-to-b from-white via-rose-200 via-sky-200 via-emerald-200 to-white">
         {/* ⬇️ Overlay pixels AU-DESSUS du gradient, SOUS le contenu */}

@@ -10,7 +10,7 @@ const rows = [
   },
   {
     side: 'image-left' as const,
-    image: { src: '/images/portrait-2.jpg', alt: 'Guillaume — musique' },
+    image: { src: '/images/portrait-2.jpeg', alt: 'Guillaume — musique' },
     title: 'Passionné de musique',
     text: "Je compose et bidouille du son. J’aime croiser musique et data : analyse de playlists, détection de tempo, petites applis de recommandation.",
   },
@@ -22,7 +22,7 @@ const rows = [
   },
   {
     side: 'image-left' as const,
-    image: { src: '/images/portrait-4.jpeg', alt: 'Guillaume — projets tech' },
+    image: { src: '/images/portrait-4.jpg', alt: 'Guillaume — projets tech' },
     title: 'Créatif et développeur',
     text: "J’aime donner vie aux idées : Next.js, TypeScript, GSAP. Prototypes rapides, détails soignés, performance réelle.",
   },
