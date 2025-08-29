@@ -1,6 +1,5 @@
 import Hero from '@/components/Hero'
 import projects from '@/content/projects'
-import formations from '@/content/formations'
 import FormationsSection from '@/components/Formation/FormationsSection'
 import ExperiencesSection from '@/components/Experience/ExperiencesSection'
 import ProjectsSection from '@/components/Projet/ProjectsSection'
@@ -14,45 +13,47 @@ export default function Home() {
     <>
       <SplashScreen minDuration={800} />
 
-      <section data-hero className="relative h-screen">
+      <section data-hero className="relative min-h-[100svh] md:h-screen">
         <Hero />
       </section>
 
-      <div className="relative w-full pt-24 pb-0 bg-gradient-to-b from-white via-rose-200 via-sky-200 via-emerald-200 to-white">
-        {/* ⬇️ Overlay pixels AU-DESSUS du gradient, SOUS le contenu */}
+      <div className="relative w-full pt-16 md:pt-24 pb-0 bg-gradient-to-b from-white via-rose-200 via-sky-200 via-emerald-200 to-white">
+        {/* Overlay pixels */}
         <PixelOverlayBlend
-          className="absolute inset-0 z-0"
+          className="hidden sm:block absolute inset-0 z-0"
           cellSize={25}
           radius={30}
           intensity={0.9}
-          blendMode="multiply"   // 'screen' pour éclaircir, 'overlay' pour contraste
+          blendMode="multiply"   
           strength={1}
         />
 
         {/* contenu au-dessus */}
         <div className="relative z-10">
           {/* Formations */}
-          <section id="formations" className="pb-12">
-            <h2 className="px-48 text-4xl md:text-5xl font-bold uppercase py-4">Formations</h2>
-            <FormationsSection formations={formations} className="bg-black" />
-          </section>
+          <FormationsSection />
+          
 
           {/* Expériences */}
           <ExperiencesSection />
 
           {/* Projets */}
-          <section id="projects" className="px-0 md:px-0 py-12">
-            <h2 className="px-48 text-4xl md:text-5xl font-bold uppercase">Projets</h2>
-            <div className="mt-8">
+          <section id="projects" className="py-12">
+            <h2 className="px-48 text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
+              Projets
+            </h2>
+            <div className="mt-6 sm:mt-8">
               <ProjectsSection projects={projects} speed={75} />
             </div>
           </section>
 
           {/* CV */}
-          <section className="px-48 py-12">
+          <section className="py-12">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-bold uppercase">Télécharger mon CV</h2>
-              <p className="mt-4 text-lg">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
+                Télécharger mon CV
+              </h2>
+              <p className="mt-4 text-base sm:text-lg">
                 Vous pouvez télécharger mon CV au format PDF en cliquant sur le lien ci-dessous.
               </p>
               <a

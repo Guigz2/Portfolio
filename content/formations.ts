@@ -17,6 +17,7 @@ const formations: Formation[] = [
     school: 'Lycée Jean-Baptiste SAY',
     degree: "Classe Préparatoire aux Grandes Ecoles - Physique Science de l'ingénieur (PSI*)",
     period: '2020-2022',
+    location: 'Paris, FR',
     details: [
       'Maths avancées : algèbre linéaire, probas/statistiques',
       'Physique & SI : modélisation, systèmes et méthodes numériques',
@@ -34,6 +35,7 @@ const formations: Formation[] = [
     slug: 'ecole',
     school: 'IMT Nord Europe (école issue de la fusion des Mines de Douai et de Télécom Lille)',
     degree: 'Diplôme d’ingénieur généraliste',
+    location: 'Douai, FR',
     period: '2022-2025',
     description: "Spécialisation en analyses de données avancées, outils BI, base de données, Machine Learning",
     details: [

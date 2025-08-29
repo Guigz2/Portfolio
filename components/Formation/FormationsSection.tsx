@@ -1,69 +1,121 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import formations from '@/content/formations'
 import FormationCard from '@/components/Formation/FormationCard'
-import type { Formation } from '@/content/formations'
 
 gsap.registerPlugin(ScrollTrigger)
 
-type Props = {
-  formations: Formation[]
-  className?: string
-}
+export default function FormationsSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const railRef = useRef<HTMLDivElement>(null)    
+  const listRef = useRef<HTMLDivElement>(null)    
+  const titleRef = useRef<HTMLHeadingElement>(null)
 
-export default function FormationsSection({ formations, className }: Props) {
-  const root = useRef<HTMLDivElement | null>(null)
-  const prefersReduced =
-    typeof window !== 'undefined' &&
-    window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  useLayoutEffect(() => {
+    const section = sectionRef.current
+    const rail = railRef.current
+    const list = listRef.current
+    const title = titleRef.current
+    if (!section || !rail || !list || !title) return
 
-  useEffect(() => {
-    if (!root.current) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) return
+
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+    const headerEl = document.querySelector<HTMLElement>(
+      isDesktop ? 'header.sticky.header--hero' : 'header.sticky.header--mobile'
+    )
+    const headerOffset = headerEl ? headerEl.getBoundingClientRect().height*3 : 0
+
+    const calcTravel = () => {
+      const railH = rail.clientHeight || section.clientHeight
+      return Math.max(0, railH - title.offsetHeight)
+    }
+    const calcEnd = () => `+=${calcTravel()}`
+
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLDivElement>('[data-formation-card]')
-      gsap.set(cards, { autoAlpha: 0, y: 16, scale: 0.98 })
-
-      ScrollTrigger.batch(cards, {
-        start: 'top 85%', 
-        once: true,       
-        onEnter: (batch) => {
-          if (prefersReduced) {
-            gsap.set(batch, { autoAlpha: 1, y: 0, scale: 1 })
-          } else {
-            gsap.to(batch, {
+      const tween = gsap.fromTo(
+        title,
+        { y: 0 },
+        {
+          y: calcTravel,
+          ease: 'none',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: section,
+            start: () => {
+              return `top top+=${headerOffset}`
+            },
+            end: calcEnd,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      )
+      
+      const cards = gsap.utils.toArray<HTMLElement>('[data-exp-card]')
+      gsap.set(cards, { autoAlpha: 0, y: 24 }) 
+      
+      cards.forEach((card, i) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 85%',   
+          once: true,         
+          onEnter: () => {
+            gsap.to(card, {
               autoAlpha: 1,
               y: 0,
-              scale: 1,
-              duration: 0.5,
+              duration: 0.55,
               ease: 'power2.out',
-              stagger: { each: 0.5 },
+              delay: i * 0.05, 
             })
-          }
-        },
+          },
+        })
       })
-
-      ScrollTrigger.create({
-        trigger: root.current,
-        start: 'top 75%',
-        once: true,
-      })
-    }, root)
+      return () => {
+        tween.scrollTrigger?.kill()
+        tween.kill()
+        ScrollTrigger.getAll().forEach(t => t.kill())
+      }
+    }, section)
 
     return () => ctx.revert()
-  }, [prefersReduced])
+  }, [])
 
   return (
-    <div ref={root} className={className}>
-      <div className="flex items-strech overflow-x-auto snap px-3 gap-3 will-change-transform">
-        {formations.map((f) => (
-          <div key={f.slug} data-formation-card className="snap-start self-strech">
-            <FormationCard formation={f} className='h-full flex flex-col'/>
+    <section
+      id="experiences"
+      ref={sectionRef}
+      className="px-6 md:px-40 py-12 grid gap-8 mt-8 grid-cols-3 items-stretch"
+    >
+      {/* Liste des formations à gauche */}
+      <div
+        ref={listRef}
+        className="col-span-2 grid gap-8 mt-8 grid-cols-1 pl-6"
+      >
+        {formations.map((e) => (
+          <div
+            key={e.slug}
+            data-exp-card                         
+            className="will-change-transform"     
+          >
+            <FormationCard formation={e} />
           </div>
         ))}
       </div>
-    </div>
+
+      {/* Titre coulissant à droite */}
+      <div ref={railRef} className="col-span-1 relative">
+        <h2
+          ref={titleRef}
+          className="bg-transparent pl-20 text-4xl md:text-5xl font-bold uppercase z-10 will-change-transform w-fit"
+        >
+          Formations
+        </h2>
+      </div>
+    </section>
   )
 }

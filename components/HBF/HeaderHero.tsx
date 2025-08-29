@@ -95,7 +95,7 @@ export function HeaderHero() {
   }, [])
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 bg-transparent">
+    <header ref={headerRef} className="header--hero hidden md:block sticky top-0 z-50 bg-transparent">
       <div ref={innerRef} className="w-full flex items-center justify-between gap-x-3">
         <Link href="/" className="font-bold uppercase tracking-wide">
           <span

@@ -24,8 +24,11 @@ export default function ExperiencesSection() {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) return
 
-    const headerEl = document.querySelector('header.sticky') as HTMLElement | null
-    const headerOffset = headerEl ? headerEl.getBoundingClientRect().height : 0
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+    const headerEl = document.querySelector<HTMLElement>(
+      isDesktop ? 'header.sticky.header--hero' : 'header.sticky.header--mobile'
+    )
+    const headerOffset = headerEl ? headerEl.getBoundingClientRect().height*3 : 0
 
     const calcTravel = () => {
       const railH = rail.clientHeight || section.clientHeight
@@ -44,9 +47,7 @@ export default function ExperiencesSection() {
           scrollTrigger: {
             trigger: section,
             start: () => {
-              const h = document.querySelector<HTMLElement>('header.sticky')
-              const off = h ? h.getBoundingClientRect().height : 0
-              return `top top+=${off}`
+              return `top top+=${headerOffset}`
             },
             end: calcEnd,
             scrub: true,
@@ -93,9 +94,9 @@ export default function ExperiencesSection() {
       <div ref={railRef} className="col-span-1 relative">
         <h2
           ref={titleRef}
-          className="bg-transparent backdrop-blur px-8 text-4xl md:text-5xl font-bold uppercase z-10 will-change-transform w-fit"
+          className="bg-transparent px-8 text-4xl md:text-5xl font-bold uppercase z-10 will-change-transform w-fit"
         >
-          Expériences professionnelles
+          Expériences
         </h2>
       </div>
 
