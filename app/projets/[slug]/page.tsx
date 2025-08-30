@@ -6,6 +6,11 @@ export const dynamic = 'force-static'
 
 type Params = { slug: string }
 
+type PageProps<T = Record<string, string>> = {
+  params: T
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
 function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
 }
