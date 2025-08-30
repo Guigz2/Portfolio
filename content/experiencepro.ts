@@ -20,7 +20,7 @@ const experiences: Experience[] = [
     location: 'Guyancourt, FR',
     description: '6 mois',
     achievements: [
-      "Analyse des processus métiers afin d’identifier les opportunités d’amélioration et de digitalisation.",
+      "Analyse des processus métiers afin d’identifier les opportunités d’améliorations et de digitalisation.",
       "Cadrage d’un projet de transformation numérique transversal et interconnecté : conduite d’interviews utilisateurs, animation de workshops, formalisation de cas d’usage, coordination vers une vision commune.",
       "Élaboration de roadmaps projet en lien avec les parties prenantes.",
       "Montée en compétences sur les méthodes agiles (Kanban, Scrum et Safe) à travers la participation à un projet en production et un projet en développement.",
