@@ -5,8 +5,8 @@ import BottomNav from '@/components/HBF/BottomNav'
 import HeaderSwitch from '@/components/HBF/HeaderSwitch'
 
 export const metadata: Metadata = {
-  title: 'Mon Portfolio',
-  description: 'Portfolio inspiré OFF ESCAC – Next.js + GSAP',
+  title: 'Guillaume EGU',
+  description: 'Portfolio de Guillaume EGU a but de présentation professionnelle',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
