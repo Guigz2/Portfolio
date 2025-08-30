@@ -93,7 +93,7 @@ export default function Hero() {
 
       <p
         ref={descRef}
-        className="mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform"
+        className=" p-4 mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform"
       >
         Développer et implémenter des modèles statistiques et des algorithmes de
         machine learning pour faire ressortir des insights et prendre des
