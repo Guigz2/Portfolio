@@ -155,8 +155,8 @@ function buildState(): ClockState {
 
   const status =
     hour >= 8 && hour < 22
-      ? 'Je dois surement être réveillé. Contactez moi.'
-      : 'Je dois surement dormir, mais envoyer moi un message et je vous répondrai dès que possible'
+      ? 'Je dois sûrement être réveillé. Contactez moi.'
+      : 'Je dois sûrement dormir, mais envoyez-moi un message et je vous répondrai dès que possible.'
 
   return { angles, timeText, tz, status }
 }
