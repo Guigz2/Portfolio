@@ -25,8 +25,7 @@ const formations: Formation[] = [
       'Initiation à la programmation scientifique (Python/Matlab)',
     ],
     tech: [
-      'Python', 'Matlab', 'Algorithmique',
-      'Algèbre linéaire', 'Probas', 'Méthodes numériques'
+      'Python', 'Matlab', 'Algorithmique', 'Statistiques'
     ],
 
     gradient: 'from-pink-200 to-yellow-200',
@@ -39,14 +38,13 @@ const formations: Formation[] = [
     period: '2022-2025',
     description: "Spécialisation en analyses de données avancées, outils BI, base de données, Machine Learning",
     details: [
-      'Bases data : Python (pandas), SQL, data viz',
+      'Bases data : Python, SQL, data viz',
       'Statistiques descriptives & probas',
       'Intro ML : régression, arbres, k-means',
       'Outils d’ingénieur : Git, Linux, gestion de projet',
     ],
     tech: [
-      'Python', 'pandas', 'SQL', 'scikit-learn',
-      'Data viz', 'Git', 'Linux', 'Power BI'
+      'Python', 'Java', 'Git', 'Linux', 'C','MatLab', 'SQL'
     ],
     link: "https://imt-nord-europe.fr/",
     gradient: "from-yellow-200 to-green-200",
@@ -66,8 +64,8 @@ const formations: Formation[] = [
       'Projet de fin d’études en NLP',
     ],
     tech: [                     
-      'PyTorch', 'TensorFlow', 'Transformers',
-      'BERT', 'NLP', 'MLflow', 'scikit-learn'
+      'PyTorch', 'TensorFlow', 'Scikit-learn',
+      'Tensorflow', 'Pytorch', 'Git'
     ],
     link: 'https://www.uws.ac.uk/',
     gradient: "from-green-200 to-blue-200",

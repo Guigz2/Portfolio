@@ -7,25 +7,25 @@ const rows = [
     side: 'image-right' as const,
     image: { src: '/images/portrait-1.jpg', alt: 'Guillaume — portrait' },
     title: 'Jeune diplômé en data',
-    text: "Diplômé de l’IMT Nord Europe, je transforme les données en décisions via modèles, analyses et dashboards. Je cherche mon premier poste en data science",
+    text: "Diplômé de l’IMT Nord Europe, après cinq années d’études comprenant deux années de CPGE et un semestre en Écosse, je suis à la recherche de mon premier poste en data science.",
   },
   {
     side: 'image-left' as const,
     image: { src: '/images/portrait-2.jpeg', alt: 'Guillaume — musique' },
     title: 'Passionné de musique',
-    text: "Je compose et bidouille du son. J’aime croiser musique et data : analyse de playlists, détection de tempo, petites applis de recommandation.",
+    text: "Je compose et expérimente avec le son. J’aime l’alliance entre la création d’émotions et la rigueur de la composition musicale.",
   },
   {
     side: 'image-right' as const,
     image: { src: '/images/portrait-3.jpeg', alt: 'Guillaume — arts martiaux' },
     title: 'Randonnée',
-    text: "Préparation, endurance et sens de l’itinéraire : j’aime avancer pas à pas, observer le terrain et atteindre le sommet.",
+    text: "Préparation, endurance et sens de l’orientation : j’aime avancer pas à pas, profiter du terrain et atteindre des lieux difficiles d’accès.",
   },
   {
     side: 'image-left' as const,
-    image: { src: '/images/portrait-4.jpg', alt: 'Guillaume — projets tech' },
+    image: { src: '/images/portrait-4.jpeg', alt: 'Guillaume — projets tech' },
     title: 'Créatif et développeur',
-    text: "J’aime donner vie aux idées : Next.js, TypeScript, GSAP. Prototypes rapides, détails soignés, performance réelle.",
+    text: "J’aime donner vie aux idées : sites web, applications, projets électroniques… Je suis curieux de tout ce qui touche à la tech.",
   },
 ]
 

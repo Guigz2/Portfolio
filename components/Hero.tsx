@@ -88,16 +88,17 @@ export default function Hero() {
         ref={titleRef}
         className="text-6xl md:text-8xl font-bold uppercase text-white drop-shadow-lg will-change-transform"
       >
-        Data Scientist
+        Junior Data Scientist
       </h1>
 
       <p
         ref={descRef}
         className=" p-4 mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform"
       >
-        Développer et implémenter des modèles statistiques et des algorithmes de
-        machine learning pour faire ressortir des insights et prendre des
-        décisions data-driven.
+        Jeune diplomé d'une école d'ingénieur, spécialisé en Data Science. 
+        Je cherche à Développer et implémenter des modèles statistiques et 
+        des algorithmes de machine learning pour faire ressortir des 
+        insights et prendre des décisions data-driven.
       </p>
     </section>
   )

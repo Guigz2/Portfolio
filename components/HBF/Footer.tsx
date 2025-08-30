@@ -6,10 +6,7 @@ export function Footer() {
       <div className="mx-auto max-w-screen-xl px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-start text-center md:text-left">
         {/* Bloc 1 */}
         <div>
-          <h3 className="text-lg font-semibold">Disponible pour missions</h3>
-          <p className="text-sm text-neutral-300 mt-2">
-            Front + Motion avec Next.js &amp; GSAP
-          </p>
+          <h3 className="text-lg font-semibold">Disponible pour collaboration</h3>
         </div>
 
         {/* Bloc 2 */}

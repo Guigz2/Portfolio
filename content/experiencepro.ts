@@ -26,7 +26,7 @@ const experiences: Experience[] = [
       "Montée en compétences sur les méthodes agiles (Kanban, Scrum et Safe) à travers la participation à un projet en production et un projet en développement.",
       "Définition d’indicateurs de performance, analyse des données associées et contrôle de leur fiabilité."
     ],
-    tech: ['Python', 'FastAPI', 'MLflow', 'GCP', 'BigQuery'],
+    tech: ['Python', 'Agile', 'Jira', 'Confluence', 'BPMN'],
     logo: '/logo_entreprise/renault_logo.png'
   },
   {
@@ -42,7 +42,7 @@ const experiences: Experience[] = [
       "Intégration de données multi-sources dans un Data Lake afin de permettre des analyses approfondies et centralisées.",
       "Développement d’interfaces graphiques sous PowerApps, avec une attention particulière portée à la sécurité et à la fiabilité des données manipulées.",
     ],
-    tech: ['PyTorch', 'Transformers', 'DVC'],
+    tech: ['Python', 'PowerApps', 'MySQL', 'Power BI'],
     logo: '/logo_entreprise/renault_logo.png'
   },
   {
@@ -57,7 +57,7 @@ const experiences: Experience[] = [
       "Support informatique et formation des utilisateurs sur les outils internes.",
       "Administration des réseaux, gestion du parc informatique et sécurité des systèmes.",
     ],
-    tech: ['SQL', 'dbt', 'Power BI'],
+    tech: ['Python', 'MySQL', 'Bash', 'Azure',],
     logo: '/logo_entreprise/PomonaD&C_logo.png'
   },
 ]
