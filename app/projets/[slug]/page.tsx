@@ -4,6 +4,8 @@ import projects, { Project } from '@/content/projects'
 
 export const dynamic = 'force-static'
 
+type Params = { params: { slug: string } }
+
 function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
 }
@@ -12,7 +14,7 @@ export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
 }
 
-export default function ProjectDetail({ params }: { params: { slug: string } }) {
+export default function ProjectDetail({ params }: Params  ) {
   const project = getProject(params.slug)
   if (!project) return notFound()
 
