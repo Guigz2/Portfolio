@@ -10,7 +10,7 @@ function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
 }
 
