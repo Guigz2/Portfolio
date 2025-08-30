@@ -28,7 +28,7 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="bg-black mx-auto max-w-2xl px-4 py-16">
+    <section className="bg-white mx-auto max-w-2xl px-4 py-16">
       <h1 className="text-black text-4xl md:text-6xl font-bold uppercase">Contact</h1>
       <p className="text-black mt-3 text-neutral-600 dark:text-neutral-400">Discutons de votre projet ou collaboration.</p>
 
