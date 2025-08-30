@@ -37,7 +37,7 @@ export default function AlternatingShowcase() {
         {rows.map((r, i) => (
           <article
             key={`m-${i}`}
-            className="rounded-2xl overflow-hidden bg-white/80 dark:bg-zinc-900/70 shadow-sm ring-1 ring-black/5 backdrop-blur-sm"
+            className="rounded-2xl overflow-hidden bg-white/80 shadow-sm ring-1 ring-black/5 backdrop-blur-sm"
           >
             <div className="relative w-full aspect-[4/5]">
               <Image
@@ -52,7 +52,7 @@ export default function AlternatingShowcase() {
 
             <div className="p-4">
               <h3 className="text-lg font-semibold tracking-tight">{r.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p className="mt-2 text-sm leading-relaxed text-black">
                 {r.text}
               </p>
             </div>
