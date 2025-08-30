@@ -52,7 +52,7 @@ export default function ContactPage() {
           <input type="text" name="botfield" className="hidden" tabIndex={-1} autoComplete="off" />
 
           <label className="grid gap-2">
-            <span className="text-black text-sm">Votre Nom</span>
+            <span className="text-black text-sm">Votre nom</span>
             <input required name="name" className="border border-neutral-300 dark:border-neutral-700 bg-transparent p-2" />
           </label>
           <label className="grid gap-2">
@@ -60,7 +60,7 @@ export default function ContactPage() {
             <input required type="email" name="email" className="border border-neutral-300 dark:border-neutral-700 bg-transparent p-2" />
           </label>
           <label className="grid gap-2">
-            <span className="text-black text-sm">Votre Message</span>
+            <span className="text-black text-sm">Votre message</span>
             <textarea required name="message" rows={6} className="border border-neutral-300 dark:border-neutral-700 bg-transparent p-2" />
           </label>
           <div className="flex items-center gap-4">
