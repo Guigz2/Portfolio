@@ -28,9 +28,9 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="mx-auto max-w-2xl px-4 py-16">
-      <h1 className="text-4xl md:text-6xl font-bold uppercase">Contact</h1>
-      <p className="mt-3 text-neutral-600 dark:text-neutral-400">Discutons de votre projet ou collaboration.</p>
+    <section className="bg-black mx-auto max-w-2xl px-4 py-16">
+      <h1 className="text-black text-4xl md:text-6xl font-bold uppercase">Contact</h1>
+      <p className="text-black mt-3 text-neutral-600 dark:text-neutral-400">Discutons de votre projet ou collaboration.</p>
 
       {state === 'sent' && (
         <>
@@ -52,20 +52,20 @@ export default function ContactPage() {
           <input type="text" name="botfield" className="hidden" tabIndex={-1} autoComplete="off" />
 
           <label className="grid gap-2">
-            <span className="text-sm">Nom</span>
+            <span className="text-black text-sm">Nom</span>
             <input required name="name" className="border border-neutral-300 dark:border-neutral-700 bg-transparent p-2" />
           </label>
           <label className="grid gap-2">
-            <span className="text-sm">Email</span>
+            <span className="text-black text-sm">Email</span>
             <input required type="email" name="email" className="border border-neutral-300 dark:border-neutral-700 bg-transparent p-2" />
           </label>
           <label className="grid gap-2">
-            <span className="text-sm">Message</span>
+            <span className="text-black text-sm">Message</span>
             <textarea required name="message" rows={6} className="border border-neutral-300 dark:border-neutral-700 bg-transparent p-2" />
           </label>
           <div className="flex items-center gap-4">
             <button type="submit" className="border px-4 py-2 text-sm border-neutral-800 dark:border-neutral-200">Envoyer</button>
-            <a href="mailto:guillaume.egu@gmail.com" className="underline text-sm">ou écrire à guillaume.egu@gmail.com</a>
+            <a href="mailto:guillaume.egu@gmail.com" className="text-black underline text-sm">ou écrire à guillaume.egu@gmail.com</a>
           </div>
         </form>
       )}

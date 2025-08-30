@@ -104,7 +104,7 @@ export default function FormationsSection() {
       <div ref={railRef} className="order-1 md:order-2 md:col-span-1 relative md:self-stretch">
         <h2
           ref={titleRef}
-          className="bg-transparent px-8 md:pl-20 text-4xl md:text-5xl font-bold uppercase z-10 w-fit"
+          className="text-black bg-transparent px-8 md:pl-20 text-4xl md:text-5xl font-bold uppercase z-10 w-fit"
         >
           Formations
         </h2>

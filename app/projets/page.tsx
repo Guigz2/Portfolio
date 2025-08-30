@@ -6,7 +6,7 @@ export const dynamic = 'force-static'
 
 export default function ProjetsPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
+    <section className="bg-white mx-auto max-w-6xl px-4 py-16">
       <header className="mb-10">
         <h1 className="text-4xl md:text-6xl font-bold uppercase">Projets</h1>
         <p className="mt-3 text-neutral-600 dark:text-neutral-400">Sélection de travaux récents.</p>

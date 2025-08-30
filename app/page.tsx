@@ -39,7 +39,7 @@ export default function Home() {
 
           {/* Projets */}
           <section id="projects" className="py-12">
-            <h2 className="px-48 text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
+            <h2 className="text-black px-48 text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
               Projets
             </h2>
             <div className="mt-6 sm:mt-8">
@@ -50,10 +50,10 @@ export default function Home() {
           {/* CV */}
           <section className="py-12">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
+              <h2 className="text-black text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
                 Télécharger mon CV
               </h2>
-              <p className="mt-4 text-base sm:text-lg">
+              <p className="text-black mt-4 text-base sm:text-lg">
                 Vous pouvez télécharger mon CV au format PDF en cliquant sur le lien ci-dessous.
               </p>
               <a

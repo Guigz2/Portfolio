@@ -103,7 +103,7 @@ export default function ExperiencesSection() {
       <div ref={railRef} className="order-1 md:order-1 md:col-span-1 relative">
         <h2
           ref={titleRef}
-          className="bg-transparent px-8 md:px-8 text-4xl md:text-5xl font-bold uppercase z-10 will-change-transform w-fit"
+          className="text-black bg-transparent px-8 md:px-8 text-4xl md:text-5xl font-bold uppercase z-10 will-change-transform w-fit"
         >
           Expériences
         </h2>
