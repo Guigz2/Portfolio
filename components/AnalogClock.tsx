@@ -43,10 +43,10 @@ export default function AnalogClock() {
       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-sm text-zinc-600 tracking-[.2em]">
         {state.status}
       </div>
-      <div className={`absolute left-6 bottom-1/2 translate-y-1/2 text-6xl md:text-7xl ${dot.className}`}>
+      <div className={`hidden md:block absolute left-6 bottom-1/2 translate-y-1/2 text-6xl md:text-7xl ${dot.className}`}>
         {state.timeText}
       </div>
-      <div className={`absolute right-6 bottom-1/2 translate-y-1/2 text-6xl md:text-7xl ${dot.className}`}>
+      <div className={`hidden md:block absolute right-6 bottom-1/2 translate-y-1/2 text-6xl md:text-7xl ${dot.className}`}>
         {state.tz}
       </div>
 

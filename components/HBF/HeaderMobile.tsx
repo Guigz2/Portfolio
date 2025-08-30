@@ -35,7 +35,7 @@ export function HeaderMobile() {
       ref={headerRef}
       className={[
         'header--mobile md:hidden sticky top-0 z-50' ,
-        onHero ? 'bg-black/10 backdrop-blur-sm' : 'bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/70',
+        onHero ? 'bg-black/40 backdrop-blur-sm' : 'bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/70',
         onHero ? 'border-b border-transparent' : 'border-b border-black/10 shadow-[0_1px_8px_rgba(0,0,0,0.06)]',
       ].join(' ')}
     >

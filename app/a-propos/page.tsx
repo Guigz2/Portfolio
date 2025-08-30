@@ -9,11 +9,11 @@ export default function AProposPage() {
     <>
       <PixelBackground cellSize={56} radius={50} intensity={0.9} />
 
-      <section className="mx-auto max-w-5xl px-4 py-16">
-        <h1 className="text-4xl md:text-6xl font-bold uppercase">Portrait</h1>
+      <section className="mx-auto max-w-5xl px-4 py-4 md:py-16">
+        <h1 className="text-4xl md:text-6xl pb-4 font-bold uppercase">Portrait</h1>
         <AlternatingShowcase />
       </section>
-      <div className="py-8 pt-64 text-center">
+      <div className="md:py-8 md:pt-64 text-center">
         <a
           href="/CV%20Guillaume%20EGU.pdf"
           download

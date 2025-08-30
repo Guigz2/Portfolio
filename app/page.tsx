@@ -13,11 +13,11 @@ export default function Home() {
     <>
       <SplashScreen minDuration={800} />
 
-      <section data-hero className="relative min-h-[100svh] md:h-screen">
+      <section data-hero className="relative min-h-0 md:h-screen">
         <Hero />
       </section>
 
-      <div className="relative w-full pt-16 md:pt-24 pb-0 bg-gradient-to-b from-white via-rose-200 via-sky-200 via-emerald-200 to-white">
+      <div className="relative w-full pt-8 md:pt-16 pb-0 bg-gradient-to-b from-white via-rose-200 via-sky-200 via-emerald-200 to-white">
         {/* Overlay pixels */}
         <PixelOverlayBlend
           className="hidden sm:block absolute inset-0 z-0"

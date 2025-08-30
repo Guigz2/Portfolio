@@ -1,5 +1,6 @@
 'use client'
 import AltParallaxRow from '@/components/AltParallaxRow'
+import Image from 'next/image'
 
 const rows = [
   {
@@ -31,20 +32,51 @@ const rows = [
 export default function AlternatingShowcase() {
   return (
     <section className="mx-auto max-w-6xl px-4 md:px-8">
-      {rows.map((r, i) => (
-        <AltParallaxRow
-          key={i}
-          side={r.side}
-          image={r.image}
-          title={r.title}
-          text={r.text}
-          depthImg={1.8}     // ⬅️ plus de mouvement image
-          depthText={0.9}    // ⬅️ un peu plus aussi pour le texte
-          compact            // ⬅️ espaces serrés
-          aspect="4 / 5"
-          overlapY={i === 0 ? 0 : -16} // ⬅️ chevauche légèrement à partir du 2e
-        />
-      ))}
+      {/* --- Version MOBILE : cartes empilées, sans parallax --- */}
+      <div className="md:hidden space-y-6">
+        {rows.map((r, i) => (
+          <article
+            key={`m-${i}`}
+            className="rounded-2xl overflow-hidden bg-white/80 dark:bg-zinc-900/70 shadow-sm ring-1 ring-black/5 backdrop-blur-sm"
+          >
+            <div className="relative w-full aspect-[4/5]">
+              <Image
+                src={r.image.src}
+                alt={r.image.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 0"
+                className="object-cover"
+                priority={i === 0}
+              />
+            </div>
+
+            <div className="p-4">
+              <h3 className="text-lg font-semibold tracking-tight">{r.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                {r.text}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* --- Version DESKTOP : tes rangées parallax existantes --- */}
+      <div className="hidden md:block">
+        {rows.map((r, i) => (
+          <AltParallaxRow
+            key={`d-${i}`}
+            side={r.side}
+            image={r.image}
+            title={r.title}
+            text={r.text}
+            depthImg={1.8}         // plus de mouvement image
+            depthText={0.9}        // un peu plus aussi pour le texte
+            compact
+            aspect="4 / 5"
+            overlapY={i === 0 ? 0 : -16} // chevauche à partir du 2e
+          />
+        ))}
+      </div>
     </section>
   )
 }

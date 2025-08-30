@@ -20,26 +20,34 @@ export default function Hero() {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const ctx = gsap.context(() => {
-      if (titleRef.current) {
-        if (prefersReduced) {
-          gsap.set(titleRef.current, { opacity: 1, x: 0 })
-        } else {
-          gsap.fromTo(
+      // Délai global (équivalent de minDuration={900} -> 900ms)
+      const delaySeconds = 2.5
+
+      if (prefersReduced) {
+        if (titleRef.current) gsap.set(titleRef.current, { opacity: 1, x: 0 })
+        if (descRef.current) gsap.set(descRef.current, { opacity: 1, x: 0 })
+      } else {
+        // Timeline avec délai initial
+        const tl = gsap.timeline({
+          delay: delaySeconds,
+          defaults: { ease: 'power3.out', duration: 1 }
+        })
+
+        if (titleRef.current) {
+          tl.fromTo(
             titleRef.current,
             { x: -80, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out' }
+            { x: 0, opacity: 1 }
           )
         }
-      }
 
-      if (descRef.current) {
-        if (prefersReduced) {
-          gsap.set(descRef.current, { opacity: 1, x: 0 })
-        } else {
-          gsap.fromTo(
+        if (descRef.current) {
+          // Démarre 0.5s après le titre comme avant
+          tl.fromTo(
             descRef.current,
             { x: 80, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.5 }
+            { x: 0, opacity: 1 },
+            '+=0.5'
           )
         }
       }
@@ -63,7 +71,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden"
+      className="relative h-[70vh] md:h-screen flex flex-col justify-center items-center text-center overflow-hidden"
     >
       <video
         ref={videoRef}
