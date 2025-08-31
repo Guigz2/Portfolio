@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import projects, { Project } from '@/content/projects'
+import NotebookEmbed from '@/components/NotebookEmbed'
 
 export const dynamic = 'force-static'
 
@@ -47,6 +48,22 @@ export default async function ProjectDetail({
               <li key={t} className="border px-2 py-1 text-xs border-neutral-300 dark:border-neutral-700">{t}</li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {project.notebookHtml && (
+        <section className="mt-10">
+          <h3 className="text-sm uppercase tracking-wide text-neutral-500 mb-3">
+            Notebook / Analyse
+          </h3>
+          <NotebookEmbed
+            src={project.notebookHtml}
+            title={`${project.title} – Notebook`}
+            initialVh={80}
+          />
+          <p className="mt-2 text-xs text-neutral-500">
+            Astuce&nbsp;: cliquez droit &rarr; «&nbsp;Ouvrir dans un nouvel onglet&nbsp;» pour plein écran.
+          </p>
         </section>
       )}
 

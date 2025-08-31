@@ -10,6 +10,7 @@ export type Project = {
   client?: string
   link?: string
   repo?: string
+  notebookHtml?: string 
 }
 
 const projects: Project[] = [
@@ -23,6 +24,7 @@ const projects: Project[] = [
     gallery: ['/images/projet1.jpg'],
     summary: "Page d'accueil animée avec ScrollTrigger.",
     link: '#',
+    notebookHtml: '/notebooks/EDA_SNCF.html',
   },
   {
     slug: 'projet-2',

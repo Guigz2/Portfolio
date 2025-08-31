@@ -8,7 +8,7 @@ export type Formation = {
   details?: string[]   
   link?: string
   gradient: string
-  tech?: string[] 
+  tech?: string[]
 }
 
 const formations: Formation[] = [
