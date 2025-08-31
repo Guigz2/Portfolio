@@ -15,15 +15,15 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    slug: 'projet-1',
-    title: 'Projet 1',
-    role: 'UI/UX + Dev Front',
+    slug: 'projet-sncf-eda',
+    title: 'Analyse exploratoire des données de la SNCF',
+    role: 'EDA & Data Viz',
     year: 2025,
-    tags: ['Next.js', 'GSAP'],
-    image: '/images/projet1.jpg',
-    gallery: ['/images/projet1.jpg'],
-    summary: "Page d'accueil animée avec ScrollTrigger.",
-    link: '#',
+    tags: ['Python', 'Pandas', 'Plotly', 'Numpy', 'matplotlib','Seaborn','Sklearn'],
+    image: '/images/logo_SNCF.png',
+    summary: "Ce projet se concentre sur une analyse exploratoire des données (EDA) et une modélisation prédictive simple à partir des données de fréquentation des passagers du réseau Transilien (SNCF). Le jeu de données contient des enregistrements quotidiens du trafic de passagers à travers différentes gares, lignes et plages horaires.L’objectif est de mettre en évidence des schémas temporels clairs et de comprendre ce jeu de données le plus en profondeur possible.",
+    client: 'Projet académique',
+    repo:"https://github.com/Guigz2/EDA_SNCF",
     notebookHtml: '/notebooks/EDA_SNCF.html',
   },
   {
