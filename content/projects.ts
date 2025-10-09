@@ -31,9 +31,11 @@ const projects: Project[] = [
     title: 'Prédiction supervisée de la consommation électrique',
     role: 'Régression & time series',
     year: 2025,
-    tags: ['WIP'],
-    image: '/images/logo_EDF.png',
-    summary: 'Work in Progress',
+     tags: ['Python', 'Pandas', 'Plotly', 'Numpy', 'matplotlib', 'Seaborn', 'Sklearn'],
+     image: '/images/logo_EDF.png',
+     summary: "Ce projet porte sur la prédiction supervisée de la consommation électrique à partir de séries temporelles et de données de consommation. L'objectif est d'explorer les schémas de consommation, de réaliser une analyse exploratoire approfondie et de mettre en œuvre des modèles de régression pour anticiper la demande électrique. Le jeu de données comprend des mesures quotidiennes ou horaires, permettant d'étudier les tendances, les variations saisonnières et les facteurs influençant la consommation.",
+     repo:"https://github.com/Guigz2/SP_Electrical_consumption",
+     notebookHtml: "/notebooks/SP_electrical.html"
   },
   {
     slug: 'projet-regression-churn',
