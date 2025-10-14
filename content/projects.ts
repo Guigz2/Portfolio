@@ -53,9 +53,11 @@ const projects: Project[] = [
     title: 'Détection de spam SMS par traitement du langage naturel (NLP)',
     role: 'NLP',
     year: 2025,
-    tags: ['WIP'],
-    image: '/images/logo_spam.png',
-    summary: 'Work in Progress',
+     tags: ['Python', 'Pandas', 'Numpy', 'NLTK', 'Scikit-learn', 'matplotlib', 'Seaborn'],
+     image: '/images/logo_spam.png',
+     summary: "Ce projet porte sur la détection de messages SMS indésirables (spam) à l'aide de techniques de traitement du langage naturel (NLP). L'objectif est d'explorer les caractéristiques textuelles, de prétraiter les données, d'extraire des features pertinentes et de mettre en œuvre des modèles de classification pour distinguer les spams des messages légitimes. Le jeu de données comprend des SMS annotés, permettant d'analyser les schémas linguistiques et d'améliorer la détection automatique.",
+     repo:"https://github.com/Guigz2/NLP-Spam",
+     notebookHtml:"/notebooks/NLP_Spam.html"
   },
   {
     slug: 'projet-vision',
