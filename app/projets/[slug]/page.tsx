@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import projects, { Project } from '@/content/projects'
 import NotebookEmbed from '@/components/NotebookEmbed'
+import UploadAndDetect from '@/components/Vision/UploadAndDetect'
 
 export const dynamic = 'force-static'
 
@@ -65,6 +66,10 @@ export default async function ProjectDetail({
             Astuce&nbsp;: cliquez droit &rarr; «&nbsp;Ouvrir dans un nouvel onglet&nbsp;» pour plein écran.
           </p>
         </section>
+      )}
+
+      {project.slug === 'projet-vision' && (
+        <UploadAndDetect />
       )}
 
       {project.gallery && project.gallery.length > 0 && (
