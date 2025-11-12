@@ -61,8 +61,32 @@ export async function POST(req: Request) {
     await fs.writeFile(tmpPath, bytes)
 
     try {
+      const external = process.env.VISION_INFERENCE_URL?.trim()
+      if (external) {
+        // Forward to external inference service as multipart/form-data
+        const f = new FormData()
+        const mime = file.type || 'application/octet-stream'
+        f.append('file', new Blob([bytes], { type: mime }), file.name || `upload${ext}`)
+        const resp = await fetch(external, { method: 'POST', body: f })
+        const data = await resp.json()
+        if (!resp.ok) {
+          return NextResponse.json({ error: data?.error || 'Remote inference error', remote: true }, { status: resp.status })
+        }
+        return NextResponse.json(data)
+      }
+
+      // If we are in production and external not set, do NOT attempt local python (avoid ENOENT spam)
+      const isProd = process.env.NODE_ENV === 'production'
+      if (isProd) {
+        return NextResponse.json({
+          error: 'VISION_INFERENCE_URL non défini en production; pas de fallback local.',
+          hint: 'Déclarez VISION_INFERENCE_URL (ex: https://<space>.hf.space/detect) et redeploy.',
+          seenValue: process.env.VISION_INFERENCE_URL ?? null
+        }, { status: 500 })
+      }
+
+      // Dev fallback: try local python
       const result = await runPythonDetect(tmpPath)
-      // Expected result: { width, height, boxes: [{x1,y1,x2,y2,score,label,cls}] }
       return NextResponse.json(result)
     } finally {
       // Best-effort cleanup
