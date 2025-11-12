@@ -2,8 +2,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 import uvicorn
 from typing import List
-from PIL import Image
-import io
+from PIL import Image, ImageOps
+import io, time, os
 
 try:
     from ultralytics import YOLO
@@ -20,11 +20,12 @@ def get_model():
         return _model
     if YOLO is None:
         raise RuntimeError(f"Ultralytics non disponible: {_import_err}")
-    # Try yolo11n then yolov8n
+    # Try progressively larger models for better accuracy, fallback to nano versions
     last_err = None
-    for name in ["yolo11n.pt", "yolov8n.pt"]:
+    for name in ["yolo11s.pt", "yolo11n.pt", "yolov8s.pt", "yolov8n.pt"]:
         try:
             _model = YOLO(name)
+            _model.__loaded_name__ = name  # annotate for debugging
             return _model
         except Exception as e:
             last_err = e
@@ -34,11 +35,21 @@ def get_model():
 @app.post("/detect")
 async def detect(file: UploadFile = File(...)):
     try:
+        started = time.time()
         content = await file.read()
-        im = Image.open(io.BytesIO(content)).convert("RGB")
+        # Open and normalize orientation (EXIF) to avoid rotated mobile photos
+        im = Image.open(io.BytesIO(content))
+        im = ImageOps.exif_transpose(im).convert("RGB")
         width, height = im.size
         model = get_model()
-        res = model(im, verbose=False)
+        # Confidence threshold configurable via env (default 0.15 for better recall)
+        conf_env = os.environ.get("VISION_CONF")
+        try:
+            conf_val = float(conf_env) if conf_env else 0.15
+        except ValueError:
+            conf_val = 0.15
+        # Run inference with fixed imgsz for consistency
+        res = model(im, verbose=False, imgsz=640, conf=conf_val)
         r = res[0]
         boxes_out = []
         if r.boxes is not None and len(r.boxes) > 0:
@@ -55,7 +66,16 @@ async def detect(file: UploadFile = File(...)):
                     'x1': float(x1), 'y1': float(y1), 'x2': float(x2), 'y2': float(y2),
                     'score': score, 'cls': cls_id, 'label': label
                 })
-        return JSONResponse({ 'width': width, 'height': height, 'boxes': boxes_out })
+        elapsed_ms = (time.time() - started) * 1000
+        return JSONResponse({
+            'width': width,
+            'height': height,
+            'boxes': boxes_out,
+            'inference_ms': round(elapsed_ms, 1),
+            'model': getattr(model, '__loaded_name__', 'unknown'),
+            'confidence': conf_val,
+            'raw_boxes_count': len(boxes_out)
+        })
     except Exception as e:
         return JSONResponse({ 'error': str(e) }, status_code=500)
 
