@@ -88,17 +88,17 @@ export default function Hero() {
         ref={titleRef}
         className="text-6xl md:text-8xl font-bold uppercase text-white drop-shadow-lg will-change-transform"
       >
-        Junior Data Scientist
+        Transformation Digitale & Data 
       </h1>
 
       <p
         ref={descRef}
-        className=" p-4 mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform"
+        className=" p-4 mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform" 
       >
-        Jeune diplomé d'une école d'ingénieur, spécialisé en Data Science. 
-        Je cherche à Développer et implémenter des modèles statistiques et 
-        des algorithmes de machine learning pour faire ressortir des 
-        insights et prendre des décisions data-driven.
+        Jeune diplômé d'une école d'ingénieur, spécialisé en Data Science,
+        je souhaite contribuer à la transformation numérique des organisations en exploitant la puissance des données. 
+        Mon objectif est de développer et mettre en œuvre des solutions data-driven pour améliorer la prise de décision,
+        optimiser les processus et accompagner la transition vers des modèles plus digitaux et performants.
       </p>
     </section>
   )

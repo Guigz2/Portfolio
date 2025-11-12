@@ -64,9 +64,11 @@ const projects: Project[] = [
     title: "Détection d'objets sur des photos de rue",
     role: 'Vison par ordinateur',
     year: 2025,
-    tags: ['WIP'],
+    tags: ['Python', 'PyTorch', 'YOLOv11', 'Computer Vision', 'Object Detection'],
     image: '/images/logo_detection.png',
-    summary: 'Work in Progress',
+    summary: "Mise en place d'une chaîne complète de détection d'objets sur scènes urbaines (voitures, piétons, panneaux, feux) avec YOLOv11. Le projet couvre la préparation des données, le fine-tuning via transfert d'apprentissage, l'évaluation (mAP, précision/rappel) et l'inférence temps réel sur images avec NMS et visualisation des bounding boxes.",
+    repo:"https://github.com/Guigz2/Computer_vision",
+    notebookHtml:"/notebooks/Computer_vision.html"
   },
   {
     slug: 'projet-reco',

@@ -40,6 +40,7 @@ export default function ProjectsMarqueeDrag({ projects, speed = 40 }: Props) {
   const rafRef = useRef<number | null>(null)
   const lastTsRef = useRef<number | null>(null)
   const pausedRef = useRef(false)
+  const draggedRef = useRef(false)
 
   useEffect(() => {
     const el = scrollerRef.current
@@ -76,6 +77,7 @@ export default function ProjectsMarqueeDrag({ projects, speed = 40 }: Props) {
 
     const down = (x: number) => {
       setIsDown(true)
+      draggedRef.current = false
       el.classList.add('cursor-grabbing')
       el.classList.remove('cursor-grab')
       posRef.current.startX = x
@@ -84,6 +86,12 @@ export default function ProjectsMarqueeDrag({ projects, speed = 40 }: Props) {
     const move = (x: number) => {
       if (!isDown) return
       const dx = x - posRef.current.startX
+      
+      // Si on a bougé de plus de 5px, on considère que c'est un drag
+      if (Math.abs(dx) > 5) {
+        draggedRef.current = true
+      }
+      
       el.scrollLeft = posRef.current.startScrollLeft - dx
       const half = track.scrollWidth / repeat
       while (el.scrollLeft >= half) el.scrollLeft -= half
@@ -109,6 +117,15 @@ export default function ProjectsMarqueeDrag({ projects, speed = 40 }: Props) {
     el.addEventListener('touchmove', onTouchMove, { passive: true })
     el.addEventListener('touchend', onTouchEnd)
 
+    // Intercepter les clics pour empêcher la navigation après un drag
+    const onClick = (e: Event) => {
+      if (draggedRef.current) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+    }
+    el.addEventListener('click', onClick, { capture: true })
+
     return () => {
       el.removeEventListener('mousedown', onMouseDown)
       window.removeEventListener('mousemove', onMouseMove)
@@ -116,6 +133,7 @@ export default function ProjectsMarqueeDrag({ projects, speed = 40 }: Props) {
       el.removeEventListener('touchstart', onTouchStart)
       el.removeEventListener('touchmove', onTouchMove)
       el.removeEventListener('touchend', onTouchEnd)
+      el.removeEventListener('click', onClick, { capture: true })
     }
   }, [isDown, repeat])
 
