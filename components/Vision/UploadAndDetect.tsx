@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 
 type Box = { x1: number; y1: number; x2: number; y2: number; score?: number; cls?: number; label?: string }
 
@@ -48,47 +48,66 @@ export default function UploadAndDetect() {
     }
   }
 
-  // Draw boxes when image and predictions are ready
-  useEffect(() => {
+  const drawBoxes = useCallback(() => {
     const img = imgRef.current
     const canvas = canvasRef.current
     if (!img || !canvas) return
+    if (!boxes || !origSize || boxes.length === 0) return
+    const rect = img.getBoundingClientRect()
+    const displayW = rect.width
+    const displayH = rect.height
+    // Handle high DPI for mobile (crisp drawing)
+    const dpr = window.devicePixelRatio || 1
+    canvas.style.width = displayW + 'px'
+    canvas.style.height = displayH + 'px'
+    canvas.width = Math.round(displayW * dpr)
+    canvas.height = Math.round(displayH * dpr)
     const ctx = canvas.getContext('2d')
     if (!ctx) return
-
-    const draw = () => {
-      const w = img.clientWidth
-      const h = img.clientHeight
-      canvas.width = w
-      canvas.height = h
-      ctx.clearRect(0, 0, w, h)
-      if (!boxes || !origSize) return
-      const scaleX = w / origSize.w
-      const scaleY = h / origSize.h
-      ctx.lineWidth = 2
-      ctx.font = '12px sans-serif'
-      boxes.forEach((b) => {
-        const x = b.x1 * scaleX
-        const y = b.y1 * scaleY
-        const bw = (b.x2 - b.x1) * scaleX
-        const bh = (b.y2 - b.y1) * scaleY
-        ctx.strokeStyle = '#22c55e'
-        ctx.fillStyle = 'rgba(34,197,94,0.15)'
-        ctx.strokeRect(x, y, bw, bh)
-        ctx.fillRect(x, y, bw, bh)
-        const label = `${b.label ?? 'obj'}${b.score != null ? ` ${(b.score * 100).toFixed(1)}%` : ''}`
-        ctx.fillStyle = '#22c55e'
-        ctx.fillRect(x, Math.max(0, y - 16), ctx.measureText(label).width + 8, 16)
-        ctx.fillStyle = '#0a0a0a'
-        ctx.fillText(label, x + 4, Math.max(10, y - 4))
-      })
-    }
-
-    draw()
-    const obs = new ResizeObserver(draw)
-    obs.observe(img)
-    return () => obs.disconnect()
+    ctx.scale(dpr, dpr)
+    ctx.clearRect(0, 0, displayW, displayH)
+    const scaleX = displayW / origSize.w
+    const scaleY = displayH / origSize.h
+    ctx.lineWidth = 2
+    ctx.font = '12px sans-serif'
+    boxes.forEach((b) => {
+      const x = b.x1 * scaleX
+      const y = b.y1 * scaleY
+      const bw = (b.x2 - b.x1) * scaleX
+      const bh = (b.y2 - b.y1) * scaleY
+      ctx.strokeStyle = '#22c55e'
+      ctx.fillStyle = 'rgba(34,197,94,0.15)'
+      ctx.strokeRect(x, y, bw, bh)
+      ctx.fillRect(x, y, bw, bh)
+      const label = `${b.label ?? 'obj'}${b.score != null ? ` ${(b.score * 100).toFixed(1)}%` : ''}`
+      const textW = ctx.measureText(label).width + 8
+      const textX = x
+      const textY = Math.max(0, y - 16)
+      ctx.fillStyle = '#22c55e'
+      ctx.fillRect(textX, textY, textW, 16)
+      ctx.fillStyle = '#0a0a0a'
+      ctx.fillText(label, textX + 4, textY + 12)
+    })
   }, [boxes, origSize])
+
+  // Redraw on boxes update
+  useEffect(() => { drawBoxes() }, [drawBoxes])
+
+  // Redraw when image loads (mobile sometimes had 0 size during first effect)
+  useEffect(() => {
+    const img = imgRef.current
+    if (!img) return
+    const handleLoad = () => drawBoxes()
+    img.addEventListener('load', handleLoad)
+    return () => img.removeEventListener('load', handleLoad)
+  }, [drawBoxes])
+
+  // Redraw on resize (orientation change, viewport resize on mobile)
+  useEffect(() => {
+    const onResize = () => drawBoxes()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [drawBoxes])
 
   return (
     <section className="mt-10">
@@ -115,6 +134,9 @@ export default function UploadAndDetect() {
             <img ref={imgRef} src={imgUrl} alt="entrée" className="w-full h-auto block" />
             <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
           </div>
+        )}
+        {boxes && boxes.length > 0 && !error && (
+          <p className="text-xs text-neutral-500">{boxes.length} objet(s) détecté(s).</p>
         )}
       </div>
     </section>
