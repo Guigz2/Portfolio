@@ -99,7 +99,7 @@ export default function FormationsSection() {
     <section
       id="experiences"
       ref={sectionRef}
-      className="px-6 md:px-40 py-12 grid gap-8 mt-8 grid-cols-1 md:grid-cols-3 items-stretch"
+      className="px-6 md:px-12 lg:px-16 xl:px-20 py-12 grid gap-8 mt-8 grid-cols-1 md:grid-cols-3 items-stretch"
     >
       <div ref={railRef} className="order-1 md:order-2 md:col-span-1 relative md:self-stretch">
         <h2
