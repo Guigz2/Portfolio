@@ -7,7 +7,7 @@ const rows = [
     side: 'image-right' as const,
     image: { src: '/images/portrait-1.jpg', alt: 'Guillaume — portrait' },
     title: 'Jeune diplômé en data',
-    text: "Diplômé de l’IMT Nord Europe, après cinq années d’études comprenant deux années de CPGE et un semestre en Écosse, je suis à la recherche de mon premier poste en transformation numérique.",
+    text: "Actuellement en poste chez CGI Business Consulting dans la pratice Data & IA, j'accompagne les entreprises dans leur transformation data-driven.",
   },
   {
     side: 'image-left' as const,
