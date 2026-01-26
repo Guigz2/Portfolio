@@ -30,11 +30,7 @@ export default function Home() {
 
         {/* contenu au-dessus */}
         <div className="relative z-10">
-          {/* Formations */}
-          <FormationsSection />
-          
-
-          {/* Expériences */}
+           {/* Expériences */}
           <ExperiencesSection />
 
           {/* Projets */}
@@ -45,17 +41,25 @@ export default function Home() {
             <div className="mt-6 sm:mt-8">
               <ProjectsSection projects={projects} speed={75} />
             </div>
+            <div className="max-w-2xl mx-auto text-center">
+              <a
+                href="/projets"
+                className="mt-6 inline-block bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition-colors"
+              >
+                Voir le détail des projets
+              </a>
+            </div>
           </section>
+          
+          {/* Formations */}
+          <FormationsSection />
 
           {/* CV */}
           <section className="py-12">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-black text-3xl sm:text-4xl md:text-5xl font-bold uppercase">
-                Télécharger mon CV
+                Pour avoir le détail
               </h2>
-              <p className="text-black mt-4 text-base sm:text-lg">
-                Vous pouvez télécharger mon CV au format PDF en cliquant sur le lien ci-dessous.
-              </p>
               <a
                 href="/CV%20Guillaume%20EGU.pdf"
                 download

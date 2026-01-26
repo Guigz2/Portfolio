@@ -86,19 +86,20 @@ export default function Hero() {
 
       <h1
         ref={titleRef}
-        className="text-6xl md:text-8xl font-bold uppercase text-white drop-shadow-lg will-change-transform"
+        className="text-3xl sm:text-5xl md:text-8xl font-bold uppercase text-white drop-shadow-lg will-change-transform px-6 leading-tight"
       >
-        Transformation Digitale & Data 
+        Consultant
+        Data & IA
       </h1>
 
       <p
         ref={descRef}
         className=" p-4 mt-4 text-lg max-w-lg text-white drop-shadow will-change-transform" 
       >
-        Jeune diplômé d'une école d'ingénieur, spécialisé en Data Science,
-        je souhaite contribuer à la transformation numérique des organisations en exploitant la puissance des données. 
-        Mon objectif est de développer et mettre en œuvre des solutions data-driven pour améliorer la prise de décision,
-        optimiser les processus et accompagner la transition vers des modèles plus digitaux et performants.
+        Au sein de la practice Data & IA de CGI Business Consulting, j'accompagne les clients sur l'offre Data Gouvernance. 
+        Je combine une expertise fonctionnelle et stratégique en digitalisation des processus avec des compétences techniques 
+        pour concevoir et déployer des solutions data-driven. 
+        Du cadrage à l'industrialisation, j'interviens sur l'ensemble de la chaîne de valeur des projets de transformation.
       </p>
     </section>
   )
